@@ -1,0 +1,29 @@
+/* .content-container { */
+/*   position: relative; */
+/*   top: 0; */
+/*   bottom: 100%; */
+/*   left: 0; right: 0; */
+/* } */
+
+.button-text {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.body-padding {
+  padding-left :16px;
+  padding-right :16px;
+}
+
+.example-sidenav-content {
+  display: flex;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+.routing-component-container {
+  padding: 16px;
+  justify-content: center;
+}

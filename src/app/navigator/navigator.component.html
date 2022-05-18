@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  GPC
+</mat-toolbar>
+<mat-sidenav-container class="content-container" fullscreen>
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+    <mat-action-list>
+      <button mat-list-item routerLink="/dashboard">
+        <mat-icon>dashboard</mat-icon>
+        <span class="button-text">Dashboard</span>
+      </button>
+      <button mat-list-item routerLink="/policy-search">
+        <mat-icon>search</mat-icon>
+        <span class="button-text">Policy Database</span>
+      </button>
+      <button mat-list-item routerLink="/broker-registry">
+        <mat-icon>storage</mat-icon>
+        <span class="button-text">Data Brokers</span>
+      </button>
+      <button mat-list-item routerLink="/requests-manager">
+        <mat-icon>tune</mat-icon>
+        <span class="button-text">Privacy Manager</span>
+      </button>
+    </mat-action-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <section class="routing-component-container">
+      <router-outlet></router-outlet>
+    </section>
+  </mat-sidenav-content>
+</mat-sidenav-container>

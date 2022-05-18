@@ -1,0 +1,71 @@
+<h1>Policy Search</h1>
+
+<div class='search-form-container'>
+  <mat-form-field color="accent" appearance="fill">
+    <mat-icon matSuffix>search</mat-icon>
+    <mat-label>Search Companies</mat-label>
+    <input matInput type="text" [(ngModel)]="searchInput" (keydown.enter)="searchCompany(searchInput); loading = true;">
+  </mat-form-field>
+</div>
+
+<mat-progress-bar *ngIf='loading' mode="indeterminate"></mat-progress-bar>
+
+<ng-container class="grid-container" *ngIf="searchResult">
+  <div class="grid">
+    <mat-card *ngFor="let company of searchResult.companies">
+      <mat-card-header>
+        <div mat-card-avatar class="company-image" [ngStyle]="{'background-image': 'url('+ company.image + ')'}"></div>
+        <mat-card-title>{{company.name}}</mat-card-title>
+        <mat-card-subtitle>{{company.desc}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <table *ngIf="company.policy; else noInfo">
+          <tr>
+            <th>Do Not Sell</th>
+            <td>{{company.policy.do_not_sell}}</td>
+          </tr>
+          <mat-divider></mat-divider>
+          <tr>
+            <th>Third Party Data</th>
+            <td>{{company.policy.third_party_data}}</td>
+          </tr>
+          <mat-divider></mat-divider>
+          <tr>
+            <th>Profiling</th>
+            <td>{{company.policy.profiling}}</td>
+          </tr>
+          <mat-divider></mat-divider>
+          <tr>
+            <th>Categories Collected</th>
+            <td>
+              <ul>
+                <li *ngFor="let category of company.policy.categories">{{categoryMap[category]}}</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+        <ng-template #noInfo>
+          <p>Privacy policy not yet analyzed, please submit a request and check again later.</p>
+        </ng-template>
+      </mat-card-content>
+      <mat-card-actions *ngIf='company.policy; else request'>
+        <button mat-button (click)="addTask(company.uuid)">
+          <mat-icon style="font-size: 20px">add</mat-icon>ADD
+        </button>
+        <a [href]="company.policy.url" target="_blank">
+          <button mat-button>
+            <mat-icon style="font-size: 20px">open_in_new</mat-icon>PRIVACY POLICY
+          </button>
+        </a>
+      </mat-card-actions>
+      <ng-template #request>
+        <mat-card-actions>
+          <button mat-button (click)="submit(company.uuid)">
+            <mat-icon style="font-size: 20px">assignment</mat-icon>SUBMIT
+          </button>
+        </mat-card-actions>
+      </ng-template>
+    </mat-card>
+  </div>
+</ng-container>

@@ -1,0 +1,7 @@
+<div *ngIf="isPortal; then portal; else app"></div>
+<ng-template #portal>
+  <app-portal-navigator></app-portal-navigator>
+</ng-template>
+<ng-template #app>
+  <app-navigator></app-navigator>
+</ng-template>

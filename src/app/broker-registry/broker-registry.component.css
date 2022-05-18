@@ -1,0 +1,14 @@
+a:link {
+  color: #3f51b5;
+}
+
+a:visited {
+  color: #3f51b5;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.article-container {
+  max-width: 1024px;
+  padding: 16px;
+}

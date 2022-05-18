@@ -1,0 +1,25 @@
+<div class="article-container">
+  <h1>Data Broker Registry</h1>
+  <p>Information is sourced from the California Data Broker registry <a href="https://oag.ca.gov/data-brokers">here</a>.
+  </p>
+</div>
+
+<table cdk-table *ngIf="dataBrokers" [dataSource]="dataBrokers">
+  <ng-container cdkColumnDef="name">
+    <th cdk-header-cell *cdkHeaderCellDef>Name</th>
+    <td cdk-cell *cdkCellDef="let dataBroker">{{dataBroker.name}}</td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="email">
+    <th cdk-header-cell *cdkHeaderCellDef>Email</th>
+    <td cdk-cell *cdkCellDef="let dataBroker">{{dataBroker.email}}</td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="website">
+    <th cdk-header-cell *cdkHeaderCellDef>Website</th>
+    <td cdk-cell *cdkCellDef="let dataBroker">{{dataBroker.website_url}}</td>
+  </ng-container>
+
+  <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+  <tr cdk-row *cdkRowDef="let row; columns: displayedColumns"></tr>
+</table>

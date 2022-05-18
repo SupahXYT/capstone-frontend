@@ -1,0 +1,21 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.content-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0; 
+  right: 0;
+}
+
+.button-text {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.body-padding {
+  padding-left :16px;
+  padding-right :16px;
+}
